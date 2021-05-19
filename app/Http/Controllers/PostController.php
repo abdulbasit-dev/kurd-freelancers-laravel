@@ -104,6 +104,8 @@ class PostController extends Controller
   public function store(Request $request)
   {
 
+    // return $request->user_id;
+
     $fileName = null;
     if ($request->hasFile('file') &&  $request->file != null) {
       $fileName = time() . '.' . $request->file->extension();
@@ -125,11 +127,6 @@ class PostController extends Controller
       "time_delivary_type" => $request->time_delivary_type,
       "time_amount" => $request->time_amount,
     ]);
-
-
-
-
-
 
     if (!$post) {
       return [
