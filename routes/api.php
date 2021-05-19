@@ -14,7 +14,7 @@ Route::post("/register", "AuthContoller@register");
 //nested routed
 Route::resource('users.profiles', 'ProfileController');
 
-Route::resource("posts", "PostController")->only('index', 'show');
+Route::resource("posts", "PostController")->only('index', 'show', 'store');
 Route::resource('user_profiles', 'UserProfileController')->only('index', 'show');
 Route::resource('genders', 'GenderController')->only('index');
 Route::resource('languages', 'LanguageController')->only('index');

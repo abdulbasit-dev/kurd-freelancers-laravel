@@ -12,47 +12,48 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable  implements JWTSubject
 {
-    use HasFactory, Notifiable;
+  use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'is_admin',
-        'role_id',
-    ];
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array
+   */
+  protected $fillable = [
+    'name',
+    'email',
+    'password',
+    'is_admin',
+    'role_id',
+  ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+  /**
+   * The attributes that should be hidden for arrays.
+   *
+   * @var array
+   */
+  protected $hidden = [
+    'password',
+    'remember_token',
+  ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+  /**
+   * The attributes that should be cast to native types.
+   *
+   * @var array
+   */
+  protected $casts = [
+    'email_verified_at' => 'datetime',
+  ];
 
-    /**
-     * Get the identifier that will be stored in the subject claim of the JWT.
-     *
-     * @return mixed
-     */
-    public function getJWTIdentifier() {
-      return $this->getKey();
+  /**
+   * Get the identifier that will be stored in the subject claim of the JWT.
+   *
+   * @return mixed
+   */
+  public function getJWTIdentifier()
+  {
+    return $this->getKey();
   }
 
   /**
@@ -60,8 +61,9 @@ class User extends Authenticatable  implements JWTSubject
    *
    * @return array
    */
-  public function getJWTCustomClaims() {
-      return [];
+  public function getJWTCustomClaims()
+  {
+    return [];
   }
 
 
@@ -69,18 +71,18 @@ class User extends Authenticatable  implements JWTSubject
 
 
 
-    public function posts()
-    {
-        return $this->belongsTo(User::class);
-    }
+  public function posts()
+  {
+    return $this->hasMany(User::class);
+  }
 
-    public function profile()
-    {
-        return $this->hasOne(Profile::class);
-    }
+  public function profile()
+  {
+    return $this->hasOne(Profile::class);
+  }
 
-    public function role()
-    {
-        return $this->hasOne(Role::class, 'id', 'role_id');
-    }
+  public function role()
+  {
+    return $this->hasOne(Role::class, 'id', 'role_id');
+  }
 }
