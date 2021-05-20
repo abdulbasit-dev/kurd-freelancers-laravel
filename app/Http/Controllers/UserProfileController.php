@@ -23,7 +23,7 @@ class UserProfileController extends Controller
         'city_id' => $location
       ])->with([
         "user" => function ($query) {
-          $query->select('id', 'name as username', 'email');
+          $query->select('id', 'name as username', 'email', 'has_profile');
         },
         "city" => function ($query) {
           $query->select('id', 'name');
@@ -39,7 +39,7 @@ class UserProfileController extends Controller
     } else {
       $profiles = Profile::with([
         "user" => function ($query) {
-          $query->select('id', 'name as username', 'email');
+          $query->select('id', 'name as username', 'email', 'has_profile');
         },
         "city" => function ($query) {
           $query->select('id', 'name');
@@ -62,7 +62,7 @@ class UserProfileController extends Controller
   //show by user_id
   public function show($id)
   {
-    $user = User::select('id', 'name as username', 'email')->where('id', $id)->with([
+    $user = User::select('id', 'name as username', 'email', 'has_profile')->where('id', $id)->with([
       "profile" => function ($query) {
         $query->select('id as profile_id', 'user_id', 'name', 'age', 'about_me', 'skills', 'cv', 'certificate', 'phone_number', 'profile_picture', 'gender_id', 'city_id', 'language_id');
       },

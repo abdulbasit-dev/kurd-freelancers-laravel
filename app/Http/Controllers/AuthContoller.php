@@ -33,7 +33,7 @@ class AuthContoller extends Controller
       ], 200);
     }
 
-    $user = User::select('id', 'name as username', 'email')->where('id', auth()->user()->id)->with([
+    $user = User::select('id', 'name as username', 'email', 'has_profile')->where('id', auth()->user()->id)->with([
       "profile" => function ($query) {
         $query->select('id as profile_id', 'user_id', 'name', 'age', 'about_me', 'skills', 'cv', 'certificate', 'phone_number', 'profile_picture', 'gender_id', 'city_id', 'language_id');
       },
@@ -72,6 +72,7 @@ class AuthContoller extends Controller
     $data['username'] = $user->name;
     $data['id'] = $user->id;
     $data['email'] = $user->email;
+    $data['has_profile'] = $user->has_profile;
     $data['expire_in'] = auth('api')->factory()->getTTL() * 3600;
     $data['access_token'] = $token;
     return $data;
