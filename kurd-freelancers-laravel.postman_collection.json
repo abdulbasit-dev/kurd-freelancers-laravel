@@ -1,0 +1,552 @@
+{
+	"info": {
+		"_postman_id": "044133d3-f5a5-4599-a9cf-b291ecf12a21",
+		"name": "kurd-freelancers-laravel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "karwa3@test.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					]
+				},
+				"description": "User Login by entering  password and email\nthe server return back a token for that user"
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTYxNDA2MjEwMSwiZXhwIjoxNjE0MDY1NzAxLCJuYmYiOjE2MTQwNjIxMDEsImp0aSI6IkE2VW93ZW5sUGs2UGtmRG4iLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.zcPHmlsqMq2Lm7OD4jcd4RivkRuyIJudXIIjfJ4YnRE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/logout",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"logout"
+					]
+				},
+				"description": "logout user from the system"
+			},
+			"response": []
+		},
+		{
+			"name": "Cities",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/cities",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"cities"
+					]
+				},
+				"description": "return all the locations"
+			},
+			"response": []
+		},
+		{
+			"name": "City",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/cities",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"cities"
+					]
+				},
+				"description": "return one city by its id"
+			},
+			"response": []
+		},
+		{
+			"name": "posts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "asagsfagsfgafsgh",
+							"type": "text"
+						},
+						{
+							"key": "jack",
+							"type": "file",
+							"src": "/C:/Users/abdulbasit-dev/Downloads/KurdFreelanceFinal.pptx"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/posts",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"posts"
+					]
+				},
+				"description": "return all the posts"
+			},
+			"response": []
+		},
+		{
+			"name": "tags",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/tags",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"tags"
+					]
+				},
+				"description": "return all tags"
+			},
+			"response": []
+		},
+		{
+			"name": "single post",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/posts/201",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"posts",
+						"201"
+					]
+				},
+				"description": "return one post by its id"
+			},
+			"response": []
+		},
+		{
+			"name": "posts (filter by location)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/posts?location=Erbil&tag",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"posts"
+					],
+					"query": [
+						{
+							"key": "location",
+							"value": "Erbil"
+						},
+						{
+							"key": "tag",
+							"value": null
+						}
+					]
+				},
+				"description": "filter post by location"
+			},
+			"response": []
+		},
+		{
+			"name": "posts (filter by tag & location)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/posts?location=Erbil&tag=back-end",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"posts"
+					],
+					"query": [
+						{
+							"key": "location",
+							"value": "Erbil"
+						},
+						{
+							"key": "tag",
+							"value": "back-end"
+						}
+					]
+				},
+				"description": "filter posts by location and tag"
+			},
+			"response": []
+		},
+		{
+			"name": "posts (filter by tag)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/posts?location=&tag=back-end",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"posts"
+					],
+					"query": [
+						{
+							"key": "location",
+							"value": ""
+						},
+						{
+							"key": "tag",
+							"value": "back-end"
+						}
+					]
+				},
+				"description": "filter posts by tag"
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "karwan",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "karwa3@test.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"register"
+					]
+				},
+				"description": "register user that return \r\nname,\r\nid\r\nemail,\r\nexpire\r\ntoken"
+			},
+			"response": []
+		},
+		{
+			"name": "create profile ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cv",
+							"type": "file",
+							"src": "/C:/Users/abdulbasit-dev/Downloads/pswla.pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/2/profiles",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"2",
+						"profiles"
+					]
+				},
+				"description": "create profile for registered user"
+			},
+			"response": []
+		},
+		{
+			"name": "genders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/genders",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"genders"
+					]
+				},
+				"description": "return genders"
+			},
+			"response": []
+		},
+		{
+			"name": "languages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/languages",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"languages"
+					]
+				},
+				"description": "return languages"
+			},
+			"response": []
+		},
+		{
+			"name": "single user_profile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/user_profiles/11",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user_profiles",
+						"11"
+					]
+				},
+				"description": "return user profile based on profile id"
+			},
+			"response": []
+		},
+		{
+			"name": "user_profiles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/user_profiles",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user_profiles"
+					]
+				},
+				"description": "return all users with their profiles"
+			},
+			"response": []
+		},
+		{
+			"name": "user_profiles (filter by location)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/user_profiles?location=Duhok&tag=",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user_profiles"
+					],
+					"query": [
+						{
+							"key": "location",
+							"value": "Duhok"
+						},
+						{
+							"key": "tag",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
