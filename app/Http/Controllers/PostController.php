@@ -22,7 +22,8 @@ class PostController extends Controller
     if ($location != null && $tag != null) {
       $posts = Post::where([
         'tag_id' => $tag,
-        'city_id' => $location
+        'city_id' => $location,
+        "status" => true
       ])->with([
         'user' => function ($query) {
           $query->select('id', 'email', 'name');
@@ -37,7 +38,8 @@ class PostController extends Controller
       // filter by location
     } else if ($location != null && $tag == null) {
       $posts = Post::where([
-        'city_id' => $location
+        'city_id' => $location,
+        "status" => true
       ])->with([
         'user' => function ($query) {
           $query->select('id', 'email', 'name');
@@ -52,7 +54,8 @@ class PostController extends Controller
       // filter by tag
     } else if ($location == null && $tag != null) {
       $posts = Post::where([
-        'tag_id' => $tag
+        'tag_id' => $tag,
+        "status" => true
       ])->with([
         'user' => function ($query) {
           $query->select('id', 'email', 'name');
@@ -66,7 +69,7 @@ class PostController extends Controller
       ])->orderBy("created_at", "desc")->get();
       //no filter
     } else {
-      $posts = Post::with([
+      $posts = Post::where("status", true)->with([
         'user' => function ($query) {
           $query->select('id', 'email', 'name');
         },

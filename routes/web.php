@@ -14,24 +14,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
 });
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
-    Route::get('/', function () {
-        return view("admin.index");
-    })->name('admin');
+  Route::get('/', function () {
+    return view("admin.index");
+  })->name('admin');
 
-    //post routes
-    Route::get('posts/accept', 'Admin\PostController@accepted')->name('posts.accepted');
-    Route::get('posts/pending', 'Admin\PostController@pending')->name('posts.pending');
-    Route::get('posts/reject', 'Admin\PostController@rejected')->name('posts.rejected');
-    Route::resource('posts', "Admin\PostController");
+  //post routes
+  Route::get('posts/accept', 'Admin\PostController@accepted')->name('posts.accepted');
+  Route::get('posts/pending', 'Admin\PostController@pending')->name('posts.pending');
+  Route::get('posts/reject', 'Admin\PostController@rejected')->name('posts.rejected');
+  Route::resource('posts', "Admin\PostController");
 
-    Route::resource('teams', 'Admin\TeamController')->only('index', 'update', 'create');
-    Route::resource('cities', "Admin\CityController");
-    Route::resource('tags', "Admin\TagController");
-    Route::resource('users', "Admin\UserController")->only("index", 'show');
+  Route::resource('teams', 'Admin\TeamController')->only('index', 'update', 'create', 'destroy', 'store');
+  Route::resource('cities', "Admin\CityController");
+  Route::resource('tags', "Admin\TagController");
+  Route::resource('users', "Admin\UserController")->only("index", 'show', 'destroy');
 });
 
 

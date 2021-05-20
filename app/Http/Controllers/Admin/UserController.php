@@ -9,32 +9,38 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
 
-    public function index()
-    {
-        $users = User::where('is_admin', null)->get();
-        return view('admin.users.index', compact('users'));
-    }
+  public function index()
+  {
+    $users = User::where('is_admin', null)->get();
+    return view('admin.users.index', compact('users'));
+  }
 
 
-    public function show($id)
-    {
-        $user = User::where('id', $id)->with([
-            "profile" => function ($query) {
-                $query->select('id as profile_id', 'user_id', 'name', 'age', 'about_me', 'skills', 'cv', 'certificate', 'phone_number', 'profile_picture', 'gender_id', 'city_id', 'language_id');
-            },
-            "profile.city" => function ($query) {
-                $query->select('id', 'name');
-            },
-            "profile.language" => function ($query) {
-                $query->select('id', 'name');
-            },
-            "profile.gender" => function ($query) {
-                $query->select('id', 'name');
-            },
+  public function show($id)
+  {
+    $user = User::where('id', $id)->with([
+      "profile" => function ($query) {
+        $query->select('id as profile_id', 'user_id', 'name', 'age', 'about_me', 'skills', 'cv', 'certificate', 'phone_number', 'profile_picture', 'gender_id', 'city_id', 'language_id');
+      },
+      "profile.city" => function ($query) {
+        $query->select('id', 'name');
+      },
+      "profile.language" => function ($query) {
+        $query->select('id', 'name');
+      },
+      "profile.gender" => function ($query) {
+        $query->select('id', 'name');
+      },
 
-        ])->first();
+    ])->first();
 
-        // return $user;
-        return view('admin.users.show', compact('user'));
-    }
+    // return $user;
+    return view('admin.users.show', compact('user'));
+  }
+
+  public function destroy(User $user)
+  {
+    $user->delete();
+    return redirect()->route("users.index")->with(["message" => "User deleted Succefuly", "title" => 'Deleted']);
+  }
 }
