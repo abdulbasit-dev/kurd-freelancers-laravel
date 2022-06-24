@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "044133d3-f5a5-4599-a9cf-b291ecf12a21",
 		"name": "kurd-freelancers-laravel",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12162986"
 	},
 	"item": [
 		{
@@ -15,7 +16,7 @@
 					"formdata": [
 						{
 							"key": "email",
-							"value": "karwa3@test.com",
+							"value": "karwa12a@test.com",
 							"type": "text"
 						},
 						{
@@ -219,7 +220,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/posts?location=Erbil&tag",
+					"raw": "http://127.0.0.1:8000/api/posts?location=Duhok&tag",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -235,7 +236,7 @@
 					"query": [
 						{
 							"key": "location",
-							"value": "Erbil"
+							"value": "Duhok"
 						},
 						{
 							"key": "tag",
@@ -335,7 +336,7 @@
 						},
 						{
 							"key": "email",
-							"value": "karwa3@test.com",
+							"value": "karwa12a@test.com",
 							"type": "text"
 						}
 					]
